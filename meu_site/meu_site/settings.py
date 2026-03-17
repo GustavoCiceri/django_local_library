@@ -24,13 +24,13 @@ load_dotenv()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-&psk#na5l=p3q8_a+-$4w1f^lt3lx1c@d*p4x$ymm_rn7pwb87')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
 DEBUG = os.environ.get("DJANGO_DEBUG", "True") == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['gustavociceri.pythonanywhere.com']
 
 
 # Application definition
@@ -143,3 +143,7 @@ STORAGES = {
         "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://gustavociceri.pythonanywhere.com"
+]
