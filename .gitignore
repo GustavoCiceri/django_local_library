@@ -211,3 +211,5 @@ __marimo__/
 *.bak
 # Database
 *.sqlite3
+
+.env

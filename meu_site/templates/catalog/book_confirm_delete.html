@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+{% block content %}
+    <h1>Delete Book: {{ book }}</h1>
+    <!-- no model BookInstance eu tenho book = models.ForeignKey(Book, on_delete=models.RESTRICT) isso cria book.bookinstance_set pega todas as copias daquele livro-->
+    {% if book.bookinstance_set.all %}
+        <p>You can't delete this book until all their instances have been deleted:</p>
+        <ul>
+            {% for copy in book.boointance_set.all %}
+                <li>{{ copy }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Are you sure you want to delete this book?</p>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Yes, delete.">
+        </form>
+    {% endif %}
+{% endblock %}
